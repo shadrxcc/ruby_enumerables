@@ -1,13 +1,23 @@
 # Enumerables
+Implementation of the enumerable methods below in Ruby:
+* #each
+* #each_with_index
+* #select
+* #all?
+* #any?
+* #none?
+* #count?
+* #map
+* #inject
 
 ## Built with:
 - Ruby
 
 ## 👤 Shadrach Akaade
 
-GitHub: @shadrxcc
-Twitter: @shadrxcc
-LinkedIn: Shadrach Akaade
+* GitHub: @shadrxcc
+* Twitter: @shadrxcc
+* LinkedIn: Shadrach Akaade
 
 
 ### 🤝 Contributing
