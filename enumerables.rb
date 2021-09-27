@@ -1,7 +1,7 @@
 module Enumerables
   def my_each(figs)
-    each idx in figs
-      yield idx
+    for fig in figs
+      yield fig
         end
     end
 
