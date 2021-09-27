@@ -1,7 +1,7 @@
 module Enumerables
-  def my_each
-    each fig in figs
-      yield fig
+  def my_each(figs)
+    each idx in figs
+      yield idx
         end
     end
 
@@ -77,7 +77,6 @@ module Enumerables
     figs.my_inject {|sum, a| sum * a}
   end
 end
-
 
 val = ([1,2,3,4])
 puts val.select {|a| a==1}
