@@ -63,7 +63,6 @@ module Enumerables
     sum = my_all unless sum.positive
       yield(sum, a)
     end
-    end
   end
 
   def multiply_els(figs)
