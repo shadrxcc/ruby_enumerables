@@ -39,8 +39,8 @@ module Enumerables
     result = true
     fig.each do |a|
       if figs[a]
-      result = false
-    end
+        result = false
+      end
     end
   end
 
