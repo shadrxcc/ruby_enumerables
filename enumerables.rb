@@ -29,7 +29,7 @@ module Enumerables
   def my_any(figs)
     result = false
     fig.each do |a|
-      if (yield (figs[a]))
+      if yield (figs[a])
         result = true
       end
     end
@@ -38,7 +38,7 @@ module Enumerables
   def my_none(figs)
     result = true
     fig.each do |a|
-      if (yield (figs[a]))
+      if yield (figs[a])
         result = false
       end
     end
@@ -47,7 +47,7 @@ module Enumerables
   def my_count
     sum = 0
     fig.each do |a|
-      if (yield (figs[a]))
+      if yield (figs[a])
         sum += 1
       end
     end
@@ -61,7 +61,7 @@ module Enumerables
     sum
   end
 
-  def my_inject
+  def my_inject(figs)
     sum = 0
     fig.each do |a|
       if sum.positive?
@@ -69,6 +69,7 @@ module Enumerables
       else
         sum = yield(sum, a)
       end
+      figs
     end
   end
 
@@ -77,7 +78,6 @@ module Enumerables
   end
 end
 
-val = ([1,2,3,4])
-puts val.select {|a| a==1}
-puts val.map {|a| a * 5}
-puts val.map {|a| a.to_f}
+val = [1, 2, 3, 4]
+puts val.select { |a| a == 1 }
+puts val.map { |a| a * 5 }
