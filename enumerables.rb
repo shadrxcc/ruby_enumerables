@@ -1,12 +1,12 @@
 module Enumerables
   def my_each(figs)
-    for fig in figs
+    my_each do |fig|
       yield fig
     end
   end
 
   def my_each_with_index(figs)
-    for fig in figs
+    my_each do |fig|
       yield(fig[figs], figs)
     end
   end
