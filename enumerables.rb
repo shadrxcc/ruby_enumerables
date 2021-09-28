@@ -39,8 +39,8 @@ module Enumerables
     result = true
     fig.each do |a|
     if yield figs[a]
-        result = false
-      end
+      result = false
+    end
     end
   end
 
@@ -69,7 +69,6 @@ module Enumerables
       else
         sum = yield(sum, a)
       end
-      figs
     end
   end
 
@@ -79,5 +78,5 @@ module Enumerables
 end
 
 val = [1, 2, 3, 4]
-puts val.select { |a| a == 1 }
-puts val.map { |a| a * 5 }
+puts val.select ({ |a| a == 1 })
+puts val.map ({ |a| a * 5 })
