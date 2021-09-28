@@ -64,8 +64,7 @@ module Enumerables
   def my_inject
     sum = 0
     fig.each do |a|
-      if sum.positive?
-        sum = my_all
+      sum.positive? if sum = my_all
       else
         yield(sum, a)
       end
