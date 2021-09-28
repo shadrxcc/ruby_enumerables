@@ -1,5 +1,5 @@
 module Enumerables
-  def my_each(figs)
+  def my_each
     my_each do |fig|
       yield fig
     end
