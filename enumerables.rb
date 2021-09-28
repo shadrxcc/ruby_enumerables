@@ -61,13 +61,13 @@ module Enumerables
     sum
   end
 
-  def my_inject(figs)
+  def my_inject
     sum = 0
     fig.each do |a|
       if sum.positive?
         sum = my_all
       else
-        sum = yield(sum, a)
+        yield(sum, a)
       end
     end
   end
@@ -78,4 +78,4 @@ module Enumerables
 end
 
 puts [1, 2, 3, 4].select(&:even?)
-puts [1, 2, 3, 4].map { |a| a * 5 }
+puts ([1, 2, 3, 4].map { |a| a * 5 })
