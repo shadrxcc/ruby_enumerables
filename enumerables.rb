@@ -77,5 +77,5 @@ module Enumerables
   end
 end
 
-puts [1, 2, 3, 4].select { |a| a.even? }
+puts [1, 2, 3, 4].select(&:even?)
 puts [1, 2, 3, 4].map { |a| a * 5 }
