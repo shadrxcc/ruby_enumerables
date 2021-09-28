@@ -38,7 +38,7 @@ module Enumerables
   def my_none(figs)
     result = true
     fig.each do |a|
-    && yield figs[a]
+    if figs[a]
       result = false
     end
     end
