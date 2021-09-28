@@ -45,7 +45,6 @@ module Enumerables
     sum = 0
     fig.each do |a|
       sum += 1 if figs[a]
-      end
     end
   end
 
@@ -69,5 +68,4 @@ module Enumerables
     figs.my_inject { |sum, a| sum * a }
   end
 
-end
 #puts [1, 2, 3, 4].select(&:even?)
