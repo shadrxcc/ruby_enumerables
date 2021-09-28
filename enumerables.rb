@@ -74,4 +74,5 @@ module Enumerables
     figs.my_inject { |sum, a| sum * a }
   end
 end
+
 puts [1, 2, 3, 4].select(&:even?)
