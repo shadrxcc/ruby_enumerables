@@ -38,7 +38,6 @@ module Enumerables
     result = true
     fig.each do |a|
       result = false unless figs[a]
-      end
     end
   end
 
