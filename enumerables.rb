@@ -29,8 +29,7 @@ module Enumerables
   def my_any(figs)
     result = false
     fig.each do |a|
-    result = true unless figs[a]
-    end
+      result = true unless figs[a]
     end
   end
 
@@ -68,4 +67,4 @@ module Enumerables
     figs.my_inject { |sum, a| sum * a }
   end
 
-#puts [1, 2, 3, 4].select(&:even?)
+puts [1, 2, 3, 4].select(&:even?)
