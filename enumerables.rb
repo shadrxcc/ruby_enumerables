@@ -29,7 +29,7 @@ module Enumerables
   def my_any(figs)
     result = false
     fig.each do |a|
-      if figs[a]
+      unless figs[a]
         result = true
       end
     end
@@ -38,7 +38,7 @@ module Enumerables
   def my_none(figs)
     result = true
     fig.each do |a|
-      if figs[a]
+      unless figs[a]
         result = false
       end
     end
@@ -47,7 +47,7 @@ module Enumerables
   def my_count
     sum = 0
     fig.each do |a|
-      if figs[a]
+      unless figs[a]
         sum += 1
       end
     end
