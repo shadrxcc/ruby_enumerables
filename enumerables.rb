@@ -29,8 +29,7 @@ module Enumerables
   def my_any(figs)
     result = false
     fig.each do |a|
-      unless figs[a]
-        result = true
+      result = true unless figs[a]
       end
     end
   end
@@ -38,8 +37,7 @@ module Enumerables
   def my_none(figs)
     result = true
     fig.each do |a|
-      unless figs[a]
-        result = false
+      result = false unless figs[a]
       end
     end
   end
@@ -47,8 +45,7 @@ module Enumerables
   def my_count
     sum = 0
     fig.each do |a|
-      if figs[a]
-        sum += 1
+      sum += 1 if figs[a]
       end
     end
   end
@@ -64,9 +61,9 @@ module Enumerables
   def my_inject
     sum = 0
     fig.each do |a|
-      sum = my_all unless sum.positive
-        yield(sum, a)
-      end
+    sum = my_all unless sum.positive
+      yield(sum, a)
+    end
     end
   end
 
@@ -74,4 +71,5 @@ module Enumerables
     figs.my_inject { |sum, a| sum * a }
   end
 
-puts [1, 2, 3, 4].select(&:even?)
+end
+#puts [1, 2, 3, 4].select(&:even?)
