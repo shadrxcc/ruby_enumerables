@@ -29,8 +29,8 @@ module Enumerables
   def my_any(figs)
     result = false
     fig.each do |a|
-      result = true unless figs[a]
-      end
+    result = true unless figs[a]
+    end
     end
   end
 
