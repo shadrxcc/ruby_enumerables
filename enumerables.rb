@@ -28,24 +28,27 @@ module Enumerables
   end
 
   def my_all
-    result = true
-    fig.each do |a|
-      result = false if yield a
-    end
+    fig.each do |num|
+      unless yield(num) = false
+        return false
+      end
+      true
   end
 
   def my_any(figs)
-    result = false
-    fig.each do |a|
-      result = true unless figs[a]
-    end
+    fig.each do |num|
+      if yield(num) = true
+        return true
+      end
+      false
   end
 
   def my_none(figs)
-    result = true
-    fig.each do |a|
-      result = false unless figs[a]
-    end
+    fig.each do |num|
+      unless yield(num) = false
+      return false
+      end
+      true
   end
 
   def my_count
