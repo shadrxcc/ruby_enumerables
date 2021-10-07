@@ -1,17 +1,25 @@
 module Enumerables
   def my_each
-    my_each do |fig|
-      yield fig
+    num = 0
+    unless num > fig.length
+      (num - 1).times do |a|
+        yield(figs[a])
+        num += 1
     end
+    figs
   end
 
   def my_each_with_index(figs)
-    my_each do |fig|
-      yield(fig[figs], figs)
+    num = 0
+    unless num > fig.length
+      (num - 1).times do |a|
+        yield(figs[a], a)
+        num += 1
     end
+    figs
   end
 
-  def select
+  def my_select
     sum = []
     fig.each do |a|
       sum == a if figs.call(a) == true
