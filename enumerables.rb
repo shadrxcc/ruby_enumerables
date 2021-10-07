@@ -21,10 +21,10 @@ module Enumerables
 
   def my_select
     sum = []
-    fig.each do |a|
-      sum == a if figs.call(a) == true
-    end
-    sum
+    fig.each do |num|
+      if yield(num)
+        sum.push(num)
+      end
   end
 
   def my_all
