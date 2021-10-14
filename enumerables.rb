@@ -11,7 +11,7 @@ module Enumerable
       yield(words, num)
       num += 1
     end
-end
+  end
 
   def my_select
     arr = []
@@ -68,25 +68,25 @@ end
   def my_map(my_proc)
     sum = []
     fig.each do |a|
-    if my_proc.nil?
-      sum.push(proc.call(a))
-    else
-      sum.push(yield(num))
-    end
-    sum
+      if my_proc.nil?
+        sum.push(proc.call(a))
+      else
+        sum.push(yield(num))
+      end
+      sum
     end
   end
 
   def my_inject(arg = nil)
     sum = 0
     while sum < length
-    if arg.nil?
+      if arg.nil?
+        sum += 1
+        arg = yield(self[0], self[sum])
+      else
+        arg = yield(arg, self[sum])
+      end
       sum += 1
-      arg = yield(self[0], self[sum])
-    else
-      arg = yield(arg, self[sum])
-    end
-    sum += 1
     end
     arg
   end
