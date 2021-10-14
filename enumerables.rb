@@ -14,9 +14,9 @@ module Enumerable
 end
 
   def my_select
-    sum = []
-    my_each do |num| 
-      sum.push(num) if yield(num)
+    arr = []
+    my_each { |num| arr.push(num) if yield(num) }
+    arr
   end
 
   def my_all(arg = nil)
