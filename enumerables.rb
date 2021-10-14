@@ -1,4 +1,3 @@
-
 module Enumerable
   def my_each(&block)
     each(&block)
