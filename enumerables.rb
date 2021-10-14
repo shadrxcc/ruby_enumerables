@@ -15,7 +15,8 @@ end
 
   def my_select
     sum = []
-    my_each do { |num| sum.push(num) if yield(num)}
+    my_each do |num| 
+      sum.push(num) if yield(num)
   end
 
   def my_all(arg = nil)
