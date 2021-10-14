@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 module Enumerable
   def my_each(&block)
@@ -73,7 +72,6 @@ def my_map(my_proc)
     else
       sum.push(yield(num))
     end
-    sum
   end
 end
 
