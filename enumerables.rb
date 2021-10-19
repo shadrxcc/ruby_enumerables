@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
 module Enumerable
   def my_each(&block)
@@ -96,9 +96,9 @@ module Enumerable
       if arg.nil?
         sum += 1
         arg = yield(self[0], self[sum])
-      elsif arg.instance_of?(Range)
-        sum[0...4].my_each |a|
-        arg = yield(arg, self[a]
+        # elsif arg.instance_of?(Range)
+        # sum[0...4].my_each |a|
+        # arg = yield(arg, self[a]
       else
         arg = yield(arg, self[sum])
       end
@@ -107,6 +107,8 @@ module Enumerable
     arg
   end
 end
+
+# rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
 def multiply_els(arr)
   arr.my_inject { |sum, num| sum * num }
