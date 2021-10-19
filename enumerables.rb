@@ -1,5 +1,3 @@
-# rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
-
 module Enumerable
   def my_each(&block)
     each(&block)
@@ -107,8 +105,6 @@ module Enumerable
     arg
   end
 end
-
-# rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
 def multiply_els(arr)
   arr.my_inject { |sum, num| sum * num }
