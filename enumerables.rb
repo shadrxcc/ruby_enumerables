@@ -76,18 +76,18 @@ module Enumerable
     sum
   end
 
-  def my_map(my_proc)
-    num = 0
-    sum = []
+  def my_map(proc = nil)
+    sum = 0
+    num = []
     while sum < length
-      if my_proc.nil?
-        sum.push(proc.call(a))
+      if proc.nil?
+        num.push(yield(self[sum]))
       else
-        sum.push(yield(self[num]))
+        num.push(proc.call(self[sum]))
       end
       sum += 1
     end
-    my_proc
+    num
   end
 
   def my_inject(arg = nil)
@@ -99,14 +99,7 @@ module Enumerable
       else
         arg = yield(arg, self[sum])
       end
-
-      # sum[0...4].my_each |a|
-      memo = if symbol
-               memo.send(symbol, a)
-             else
-               yield(memo, a)
-             end
-      # arg = yield(arg, self[a]
+      sum += 1
     end
     arg
   end
@@ -117,3 +110,5 @@ end
 def multiply_els(arr)
   arr.my_inject { |sum, num| sum * num }
 end
+
+arr = [1, 3, 5, 9, 7]
