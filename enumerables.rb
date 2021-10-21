@@ -1,3 +1,5 @@
+# rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+
 module Enumerable
   def my_each(&block)
     each(&block)
@@ -21,9 +23,9 @@ module Enumerable
     if block_given?
       my_each { |a| return false unless yield a }
     elsif arg.nil?
-      my_each { return false unless a }
+      my_each { return false if a }
     elsif arg.instance_of?(Class)
-      my_each { return false unless a.class != arg }
+      my_each { return false if a.class != arg }
     elsif arg.instance_of?(Regexp)
       my_each { return false unless a }
     else
@@ -38,9 +40,9 @@ module Enumerable
     elsif arg.nil?
       return true if a
     elsif arg.instance_of?(Class)
-      my_each { |a| return true if a != arg }
+      my_each { |a| return true if a.class != arg }
     elsif arg.instance_of?(Regexp)
-      my_each { |a| return true if a != arg }
+      my_each { |a| return true if a =~ arg }
     else
       my_each { |a| return true if a != arg }
     end
@@ -53,9 +55,9 @@ module Enumerable
     elsif arg.nil?
       my_each { |a| return false if a }
     elsif arg.instance_of?(Class)
-      my_each { |a| return false if a != arg }
+      my_each { |a| return false if a.class != arg }
     elsif arg.instance_of?(Regexp)
-      my_each { |a| return false if a != arg }
+      my_each { |a| return false if a =~ arg }
     else
       my_each { |a| return false if a != arg }
     end
@@ -75,13 +77,13 @@ module Enumerable
   end
 
   def my_map(my_proc)
-    sum = 0
-    num = []
+    num = 0
+    sum = []
     while sum < length
       if my_proc.nil?
         sum.push(proc.call(a))
       else
-        sum.push(yield(self[sum]))
+        sum.push(yield(self[num]))
       end
       sum += 1
     end
@@ -94,19 +96,23 @@ module Enumerable
       if arg.nil?
         sum += 1
         arg = yield(self[0], self[sum])
-        # elsif arg.instance_of?(Range)
-        # sum[0...4].my_each |a|
-        # arg = yield(arg, self[a]
       else
         arg = yield(arg, self[sum])
       end
-      sum += 1
+
+      # sum[0...4].my_each |a|
+      memo = if symbol
+               memo.send(symbol, a)
+             else
+               yield(memo, a)
+             end
+      # arg = yield(arg, self[a]
     end
     arg
   end
 end
 
-
+# rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
 def multiply_els(arr)
   arr.my_inject { |sum, num| sum * num }
