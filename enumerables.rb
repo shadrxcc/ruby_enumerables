@@ -110,5 +110,3 @@ end
 def multiply_els(arr)
   arr.my_inject { |sum, num| sum * num }
 end
-
-arr = [1, 3, 5, 9, 7]
