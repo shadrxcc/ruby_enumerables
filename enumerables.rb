@@ -23,13 +23,13 @@ module Enumerable
     if block_given?
       my_each { |a| return false unless yield a }
     elsif arg.nil?
-      my_each { return false if a }
+      my_each { |a| return false if a }
     elsif arg.instance_of?(Class)
-      my_each { return false if a.class != arg }
+      my_each { |a| return false if a.class != arg && a.class.superclass != arg }
     elsif arg.instance_of?(Regexp)
-      my_each { return false unless a }
+      my_each { |a| return false unless a }
     else
-      my_each { return false if a != arg }
+      my_each { |a| return false if a != arg }
     end
     true
   end
@@ -38,9 +38,9 @@ module Enumerable
     if block_given?
       my_each { |a| return true if yield(a) }
     elsif arg.nil?
-      return true if a
+      my_each { |a| return true if a }
     elsif arg.instance_of?(Class)
-      my_each { |a| return true if a.class != arg }
+      my_each { |a| return true if a.class != arg && a.class.superclass != arg }
     elsif arg.instance_of?(Regexp)
       my_each { |a| return true if a =~ arg }
     else
@@ -71,7 +71,7 @@ module Enumerable
     elsif arg.nil?
       my_each { sum += 1 }
     else
-      my_each { sum += 1 if a == arg }
+      my_each { |a| sum += 1 if a == arg }
     end
     sum
   end
