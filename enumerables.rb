@@ -87,6 +87,9 @@ module Enumerable
       end
       sum += 1
     end
+    [0...-1].my_each do |a|
+    num = yield(sum, a)
+    end
     num
   end
 
@@ -100,6 +103,9 @@ module Enumerable
         arg = yield(arg, self[sum])
       end
       sum += 1
+    end
+    [0...-1].my_each do |a|
+    sum = yield(sum, a)
     end
     arg
   end
