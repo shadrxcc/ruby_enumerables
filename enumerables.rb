@@ -76,39 +76,25 @@ module Enumerable
     sum
   end
 
-  def my_map(proc = nil)
-    sum = 0
-    num = []
-    while sum < length
-      if proc.nil?
-        num.push(yield(self[sum]))
-      else
-        num.push(proc.call(self[sum]))
-      end
-      sum += 1
+  def my_map(&block)
+    sum = []
+    my_each do |a|
+      sum <<
+        block.call(a)
     end
-
-    [0...-1].my_each do |a|
-      num = yield(sum, a)
-    end
-    num
+    sum
   end
 
-  def my_inject(arg = nil)
-    sum = 0
-    while sum < length
-      if arg.nil?
-        sum += 1
-        arg = yield(self[0], self[sum])
-      else
-        arg = yield(arg, self[sum])
-      end
-      sum += 1
+  def my_inject(args = nil)
+    sym = to_enum
+    item = args.nil? ? sym.next : args
+
+    raise 'no block' unless block_given?
+
+    loop do
+      item = yield(item, sym.next)
     end
-    [0..-1].my_each do |a|
-      arg = yield(sum, a)
-    end
-    arg
+    item
   end
 end
 
