@@ -23,7 +23,7 @@ module Enumerable
     if block_given?
       my_each { |a| return false unless yield(a) == true }
     elsif arg.nil?
-      my_each { |a| return false if a == false ||a.nil?}
+      my_each { |a| return false if a == false || a.nil? }
     elsif arg.instance_of?(Class)
       my_each { |a| return false if a.class != arg && a.class.superclass != arg }
     elsif arg.instance_of?(Regexp)
@@ -103,10 +103,3 @@ end
 def multiply_els(arr)
   arr.my_inject { |sum, num| sum * num }
 end
-
-puts %w[ant bear cat].my_all? { |word| word.length >= 3 } #=> true
-puts %w[ant bear cat].my_all? { |word| word.length >= 4 } #=> false
-puts %w[ant bear cat].my_all?(/t/)                        #=> false
-puts [1, 2i, 3.14].my_all?(Numeric)                       #=> true
-puts [nil, true, 99].my_all?                              #=> false
-puts [].my_all?   
