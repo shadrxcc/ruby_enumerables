@@ -19,4 +19,10 @@ describe Enumerable do
       expect(arr.my_all? { |i| i < 4 }).to be false
     end
   end
+
+  describe '#my_any?' do
+    it 'should return true if at least one element is true' do
+      expect(arr.my_any? { |a| a.even?}).to be true
+    end
+  end
 end
