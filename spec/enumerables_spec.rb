@@ -22,7 +22,13 @@ describe Enumerable do
 
   describe '#my_any?' do
     it 'should return true if at least one element is true' do
-      expect(arr.my_any? { |a| a.even?}).to be true
+      expect(arr.my_any?(&:even?)).to be true
+    end
+  end
+
+  describe '#my_none?' do
+    it 'should return true if no elements are true' do
+      expect(arr.my_none? { |i| i > 10 }).to be true
     end
   end
 end
